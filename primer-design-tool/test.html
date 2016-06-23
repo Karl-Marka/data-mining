@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<script src="js/jquery-2.1.4.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<title>Primer Tool</title>
+</head>
+
+<body>
+<div class="divbox">
+  <h1>
+    Primer Design and Codon Optimization Tool v1.0
+  </h1>
+  <div class="selectorfield">
+      <p align="center"> Enter peptide sequence:
+        <input name="input" type="text" id="input" size="82" value="" class="textbox">
+      </p>
+		Sense primer length: 
+		<input name="sense" type="text" id="sense" size="2" value="" class="textbox">
+	&nbsp	A/s primer length: 
+		<input name="antisense" type="text" id="antisense" size="2" value="" class="textbox">
+    &nbsp Expression vector:
+      <select name="select" id="select" class="textbox">
+        <option value="ecoli">E.coli</option>
+        <option value="human">H.sapiens</option>
+        <option value="mouse">M.musculus</option>
+		<option value="plant">A.Thaliana</option>
+      </select>
+
+	  <input type="submit" name="submit" class="submit" id="submit" value="Calculate">
+
+	</div>
+	        
+    <textarea type="text" class="textbox" id="output"></textarea>
+	</div>
+	<input type="submit" id="test" value="Test">
+<script src="js/primer.js"></script>
+<script>
+testBtn = document.getElementById("test")
+
+function test(){
+document.getElementById("input").value = "ASDAS";
+document.getElementById("sense").value = 7;
+document.getElementById("antisense").value = 8;
+splitPrimer();
+	if (document.getElementById("output").value == "Antisense: TCGCTCGC Sense: TGCGAGC") {
+	console.log(document.getElementById("output").value)
+	alert ("Korras!");
+	} else { alert ("Viga!")}
+}
+
+testBtn.addEventListener("click", function(){ test(); });
+</script>
+</body>
+</html>
