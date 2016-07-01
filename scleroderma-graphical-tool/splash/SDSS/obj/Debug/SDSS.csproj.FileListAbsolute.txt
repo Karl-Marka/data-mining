@@ -1,0 +1,8 @@
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\bin\Debug\SDSS.exe.config
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\bin\Debug\SDSS.exe
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\bin\Debug\SDSS.pdb
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\obj\Debug\SDSS.Splash.resources
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\obj\Debug\SDSS.Properties.Resources.resources
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\obj\Debug\SDSS.csproj.GenerateResource.Cache
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\obj\Debug\SDSS.exe
+C:\Users\Karl\Documents\Visual Studio 2015\Projects\SDSS\SDSS\obj\Debug\SDSS.pdb
