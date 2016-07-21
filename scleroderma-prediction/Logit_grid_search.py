@@ -5,9 +5,9 @@ from sklearn.pipeline import Pipeline
 import pandas as pd
 
 def main():
-    data = pd.read_csv('./datasets/train_noduplicate.txt', header = 0, index_col = 0, sep = '\t')
+    data = pd.read_csv('./datasets_PAH/train_top10pc.txt', header = 0, index_col = 0, sep = '\t')
     data = data.T
-    labels = pd.read_csv('./datasets/labels_train.txt', sep = '\t', header = None)
+    labels = pd.read_csv('./datasets_PAH/labels_train.txt', sep = '\t', header = None)
     labels = labels.unstack().tolist()
 
     pipe_svc = Pipeline([('scl', StandardScaler()),

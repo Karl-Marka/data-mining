@@ -1,11 +1,11 @@
 from pandas import DataFrame, read_csv
-from sklearn import linear_model
+#from sklearn import linear_model
 from math import exp
 
-data = read_csv('x.txt', header = 0, index_col = 0, sep = '\t')
+data = read_csv('./datasets/train_noduplicate.txt', header = 0, index_col = 0, sep = '\t')
 data = data.T
 
-oligos = ['A_32_P30710', 'A_24_P148094', 'A_23_P77455', 'A_23_P148255', 'A_23_P141044', 'A_32_P103131', 'A_23_P121596', 'A_23_P24948', 'A_23_P68121', 'A_24_P396994']
+oligos = ['ARL4C','AIF1','S100A11','MYOF','CYBB','LOC93622','LMO2','SLC31A2','FZD1','UPF3A','MS4A4A','SECTM1','C11orf75','DYSF','VRK2']
 data = data[oligos]
 
 model = read_csv('model_parameters.txt', header = 0, index_col = 0, sep = '\t')

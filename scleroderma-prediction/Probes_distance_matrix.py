@@ -2,7 +2,7 @@ from pandas import DataFrame, read_csv
 from scipy.spatial.distance import pdist, squareform
 from sklearn.preprocessing import StandardScaler
 
-data = read_csv('./datasets/all.txt', header = 0, index_col = 0, sep = '\t')
+data = read_csv('./datasets/test_noduplicate_correl50.txt', header = 0, index_col = 0, sep = '\t')
 data = data.T
 header = data.columns
 index = data.index
@@ -13,7 +13,9 @@ data = data.T
 labels = data_transposed.index
 labels_probes = data_transposed.columns
 
+# Distances between samples:
 row_dist_samples = DataFrame(squareform(pdist(data_transposed, metric = 'euclidean')), columns = labels, index = labels)
+# Distances between probes:
 row_dist_probes = DataFrame(squareform(pdist(data, metric = 'euclidean')), columns = labels_probes, index = labels_probes)
 
 row_dist_samples.to_csv('Distances_samples.txt', sep = '\t')

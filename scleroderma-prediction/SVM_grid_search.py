@@ -6,11 +6,12 @@ import pandas as pd
 import numpy as np
 
 def main():
-    data = pd.read_csv('./datasets/train_noduplicate.txt', header = 0, index_col = 0, sep = '\t')
+    data = pd.read_csv('./datasets/train_noduplicate_correl_60.txt', header = 0, index_col = 0, sep = '\t')
     if 'Rank' in data.columns:
         del data['Rank']
         print('Deleted Ranks')
     data = data.T
+    probes = data.columns
     labels = pd.read_csv('./datasets/labels_train.txt', sep = '\t', header = None)
     labels = labels.unstack().tolist()
     test = pd.read_csv('./datasets/test_noduplicate.txt', header = 0, index_col = 0, sep = '\t')
@@ -18,6 +19,7 @@ def main():
         del test['Rank']
         print('Deleted Ranks')
     test = test.T
+    test = test[probes]
     labels_test = pd.read_csv('./datasets/labels_test.txt', header = None, sep = '\t')
     labels_test = labels_test.unstack().tolist()
 
