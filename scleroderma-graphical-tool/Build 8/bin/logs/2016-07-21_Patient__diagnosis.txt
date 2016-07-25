@@ -1,4 +1,0 @@
-Patient GSM489194 is borderline with a gene exp. similiarity of 69% to a reference Scleroderma gene exp. pattern. The probability for PAH is: < 10%
-
-
-2016-07-21
