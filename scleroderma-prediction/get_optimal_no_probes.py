@@ -8,9 +8,11 @@ from pylab import figure, xlim, ylim, ylabel, xlabel, title, tick_params, axvspa
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 from sklearn.preprocessing import StandardScaler
 
-data = read_csv('./datasets/train_ranks.txt', header = 0, index_col = 0, sep = '\t')
-data = data.sort_values('Rank', axis = 0, ascending=True)
-del data['Rank']
+data = read_csv('./datasets/train_noduplicate_ranked.txt', header = 0, index_col = 0, sep = '\t')
+if 'Rank' in data.columns:
+    data = data.sort_values('Rank', axis = 0, ascending=True)
+    del data['Rank']
+    print('Deleted the Rank columns')
 data = data.T
 header = data.columns
 index = data.index
@@ -25,7 +27,8 @@ labels = labels.unstack().tolist()
 
 #noOfOligos = len(data.columns)
 noOfOligos = 100
-clf = linear_model.LogisticRegression(random_state = 5, penalty = 'l1', C = 1000.0)
+#clf = linear_model.LogisticRegression(random_state = 5, penalty = 'l1', C = 1000.0)
+clf = linear_model.LinearRegression()
 
 
 def closeFunc():
@@ -43,7 +46,7 @@ def createPlot(y1, y2, limit):
     x = list(range(1,limit))
     #print(x)
     xlabel("No. of parameters")
-    ylabel("R-squared error")
+    ylabel("Mean squared error")
     title("In-sample error and testing error")
     tick_params(
         axis='x',          
@@ -68,8 +71,8 @@ for i in range(1,noOfOligos):
     sum_sample_errors = 0
     sum_test_errors = 0
     for j in range(0,100):
-        seed = np.random.randint(0,1000) 
-        X_train, X_test, y_train, y_test = train_test_split(data_current, labels, test_size = 0.5, random_state=5)
+        seed = np.random.randint(0,10) 
+        X_train, X_test, y_train, y_test = train_test_split(data_current, labels, test_size = 0.5, random_state=seed)
         clf.fit(X_train, y_train)
         train_predictions = clf.predict(X_train)
         test_predictions = clf.predict(X_test)
@@ -84,3 +87,4 @@ for i in range(1,noOfOligos):
     print('Currently at turn:',i)
 
 createPlot(y1, y2, noOfOligos)
+closeFunc()
